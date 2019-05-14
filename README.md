@@ -1,5 +1,3 @@
-[![Build Status](https://www.travis-ci.org/d2-projects/d2-admin-start-kit.svg?branch=master)](https://www.travis-ci.org/d2-projects/d2-admin-start-kit)
-
-[D2Admin](https://github.com/d2-projects/d2-admin) 简化版起始模板，删除所有完整版中的示例代码，保留所有核心功能。
-
-[码云镜像](https://gitee.com/fairyever/d2-admin-start-kit)
+本人毕业设计--前端
+房屋住房管理系统前端方案
+项目采用VUE，使用D2admin作为基础架构，Element-UI作为UI方案，Avue作为简化组件方案。
