@@ -10,7 +10,7 @@ export function getHomeList (data) {
 
 export function setHome (data) {
   return request({
-    url: '/home/setInfo',
+    url: '/home/saveOrUpdateHome',
     method: 'post',
     data
   })
@@ -21,5 +21,12 @@ export function delHome (data) {
     url: '/home/delInfo',
     method: 'post',
     data
+  })
+}
+
+export function getData (key) {
+  return request({
+    url: '/home/getHomeInfo/' + key,
+    method: 'get'
   })
 }

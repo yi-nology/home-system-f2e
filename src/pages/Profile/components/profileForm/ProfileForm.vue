@@ -1,6 +1,5 @@
 <template>
-    <avue-form ref="form" v-model="obj" :option="option" @submit="submit" :upload-before="uploadBefore"
-               :upload-after="uploadAfter">
+    <avue-form ref="form" v-model="obj" :option="option" @submit="submit">
 <!--        <template slot-scope="scope" slot="menuForm">-->
 <!--            <el-button @click="tip">自定义按钮</el-button>-->
 <!--        </template>-->
@@ -62,7 +61,7 @@ export default {
             listType: 'picture-img',
             span: 24,
             tip: '只能上传jpg/png用户头像，且不超过4M',
-            action: 'https://jsonplaceholder.typicode.com/posts/'
+            action: '/api/upload/headImgUpload'
           },
           {
             label: '姓名',
@@ -143,14 +142,6 @@ export default {
     },
     uploadAfter (res, done, loading) {
       console.log(res)
-      setProfile(res).thin(
-        console.log(res)
-      ).catch(
-        err => {
-          console.log(err)
-          // 异常情况
-        }
-      )
       // done()
       // this.$message.success('上传后的方法')
     }

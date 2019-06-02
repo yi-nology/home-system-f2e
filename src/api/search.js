@@ -1,8 +1,8 @@
 import request from '../plugin/axios'
 
-export function getOutInfo (data) {
+export function getOutData (data) {
   return request({
-    url: '/out/getInfo',
+    url: '/search/getInfo',
     method: 'post',
     data
   })

@@ -55,8 +55,7 @@ export default {
             width: '150px'
           }, {
             label: '房屋地址',
-            prop: 'house_address',
-            width: '500px'
+            prop: 'house_address'
           }, {
             label: '房间数量',
             visdiplay: false,
@@ -83,29 +82,51 @@ export default {
       this.$message.success('删除数据' + JSON.stringify(form))
       delHouse(form).thin().catch()
     },
+    // rowUpdate (form, index, done, loading) {
+    //   setTimeout(() => {
+    //     this.$message.success('正在请求')
+    //     loading()
+    //   }, 1000)
+    //   setTimeout(() => {
+    //     this.$message.success('编辑数据' + JSON.stringify(form) + '数据序号' + index)
+    //     setHouse(form).thin(res => {
+    //       console.log(res)
+    //       this.$message.success('请求成功')
+    //     }
+    //     ).catch(err => {
+    //       console.log(err)
+    //       this.$message.success('请求失败')
+    //     })
+    //     done()
+    //   }, 2000)
+    // },
     rowUpdate (form, index, done, loading) {
+      this.$message.success('模拟网络请求')
       setTimeout(() => {
-        this.$message.success('正在请求')
+        this.$message.success('关闭按钮等待')
         loading()
       }, 1000)
-      setHouse(form).thin(res => {
-        console.log(res)
-        this.$message.success('请求成功')
-      }
-      ).catch(err => {
-        console.log(err)
-        this.$message.success('请求失败')
-      })
       setTimeout(() => {
         this.$message.success('编辑数据' + JSON.stringify(form) + '数据序号' + index)
         done()
+        setHouse(form).thin(
+        ).catch(err => {
+          console.log(err)
+          this.$message.success('请求失败')
+        })
       }, 2000)
+      this.load()
     },
+
     rowSave (form, done, loading) {
       setTimeout(() => {
         this.$message.success('正在请求')
         loading()
       }, 1000)
+      setTimeout(() => {
+        this.$message.success('新增数据' + JSON.stringify(form))
+        done()
+      }, 2000)
       setHouse(form).thin(res => {
         console.log(res)
         this.$message.success('请求成功')
@@ -114,10 +135,6 @@ export default {
         console.log(err)
         this.$message.success('请求失败')
       })
-      setTimeout(() => {
-        this.$message.success('新增数据' + JSON.stringify(form))
-        done()
-      }, 2000)
     },
 
     create () {

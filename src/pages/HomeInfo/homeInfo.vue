@@ -1,6 +1,7 @@
 <template>
   <d2-container class="page-HomeInfo">
-    <DataTable></DataTable>
+<!--    <NewHome></NewHome>-->
+    <data-table></data-table>
   </d2-container>
 </template>
 

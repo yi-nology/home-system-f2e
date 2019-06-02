@@ -2,7 +2,7 @@ import request from '../plugin/axios'
 
 export function getPriceList (data) {
   return request({
-    url: '/price/getInfo',
+    url: '/homePrice/getInfo',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function getPriceList (data) {
 
 export function setPrice (data) {
   return request({
-    url: '/price/setInfo',
+    url: '/homePrice/saveOrUpdatePrice',
     method: 'post',
     data
   })
@@ -18,7 +18,14 @@ export function setPrice (data) {
 
 export function delPrice (data) {
   return request({
-    url: '/price/delInfo',
+    url: '/homePrice/delInfo/' + data,
+    method: 'get'
+  })
+}
+
+export function getDetail (data) {
+  return request({
+    url: '/homePrice/getDetail',
     method: 'post',
     data
   })

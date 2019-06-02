@@ -15,19 +15,18 @@ import menuAside from '@/menu/aside'
 import { frameInRoutes } from '@/router/routes'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import D2Crud from '@d2-projects/d2-crud'
 import Avue from '@smallwei/avue'
 import '@smallwei/avue/lib/theme-chalk/index.css'
 // 核心插件
 Vue.use(d2Admin)
 Vue.use(ElementUI)
-Vue.use(D2Crud)
 Vue.use(Avue, {})
 
 new Vue({
   router,
   store,
   i18n,
+
   render: h => h(App),
   created () {
     // 处理路由 得到每一级的路由设置

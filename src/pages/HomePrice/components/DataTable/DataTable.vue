@@ -1,50 +1,67 @@
 <template>
     <div>
-        添加/修改
-        <el-switch :active-value="true" :inactive-value="false" v-model="text" active-color="#13ce66"
-                   inactive-color="#ff4949">s
-        </el-switch>
-        <avue-crud :data="res" :option="option" :permission="permission"
-                   @row-save="rowSave"
+        <el-dialog
+                title="详细信息"
+                :visible.sync="dialogVisible"
+                width="30%"
+                >
+            <el-tag>水表底:{{ this.rowData.oldW }}</el-tag>
+            <el-tag>水本月:{{ this.rowData.newW }}</el-tag>
+            <el-tag>电表底:{{ this.rowData.oldE }}</el-tag>
+            <el-tag>电本月:{{ this.rowData.newE }}</el-tag>
+            <el-tag>房租价格:{{ this.rowData.price/100 }}</el-tag>
+            <el-tag>缴费周期:{{ this.rowData.rate }}</el-tag>
+            <el-tag>水单价{{ this.rowData.water/100 }}</el-tag>
+            <el-tag>电单价{{ this.rowData.electric/100 }}</el-tag>
+            <el-tag>网费{{ this.rowData.net/100 }}</el-tag>
+            <el-tag>其他费用{{ this.rowData.other/100 }}</el-tag>
+            <el-tag>合计{{ this.rowData.sum/100 }}</el-tag>
+
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+            </span>
+        </el-dialog>
+
+        <avue-crud :data="data" :option="option"
                    @row-update="rowUpdate"
                    @row-del="rowDel"
-                   @refresh-change="refreshChange"></avue-crud>
+                   @refresh-change="refreshChange"
+                   @on-load="onLoad"
+                   :page="page">
+            <template slot-scope="scope" slot="menu">
+                <el-button type="primary"
+                           icon="el-icon-check"
+                           size="small"
+                           plain
+                           @click.stop="handleEdit(scope.row,scope.index)">查看信息</el-button>
+            </template>
+        </avue-crud>
     </div>
 </template>
 
 <script>
-import { setPrice, getPriceList, delPrice } from '../../../../api/price'
+import { setPrice, getDetail, getPriceList, delPrice } from '../../../../api/price'
 export default {
   name: 'DataTable',
-  created () {
-    this.create()
-  },
   data () {
     return {
-      res: [
-        {
-          price_id: 1,
-          price_name: '小店一区价格模版',
-          content: '北京市朝阳区',
-          user_name: '2',
-          home_name: '0',
-          start: '2012-01-01',
-          end: '2018-01-01'
-        }
-      ],
+      data: [],
       text: false,
-      permission: {
-        delBtn: false,
-        addBtn: false,
-        editBtn: false
+      dialogVisible: false,
+      rowData: {},
+      page: {
+        currentPage: 1,
+        pageSize: 10,
+        total: 10
       },
       option: {
-        menu: false,
         menuType: 'text',
         page: false,
+        addBtn: false,
         align: 'center',
         menuAlign: 'center',
-        columnBtn: false,
+        delBtn: false,
         column: [
           {
             label: '价钱ID',
@@ -53,43 +70,77 @@ export default {
             hide: false
           },
           {
-            label: '房间ID',
-            prop: 'home_id',
+            label: 'rc_id',
+            prop: 'rc_id',
             visdiplay: false,
-            hide: false
+            hide: true
           },
           {
-            label: '水费',
-            prop: 'water_price',
-            visdiplay: false,
-            width: '150px'
+            label: '租户',
+            prop: 'user_name',
+            visdiplay: false
           },
           {
-            label: '电费',
-            prop: 'electric_price',
-            visdiplay: false,
-            width: '150px'
+            label: '房屋',
+            prop: 'house_name',
+            visdiplay: false
           },
           {
-            label: '网费',
-            prop: 'net_price',
-            width: '200px'
+            label: '房间',
+            prop: 'home_name',
+            visdiplay: false
           },
           {
-            label: '其他费用',
-            prop: 'other_price',
-            width: '200px'
-          },
-          {
-            label: '应缴日期',
+            label: '日期',
             prop: 'date',
-            type: 'date',
-            format: 'yyyy-MM-dd',
-            valueFormat: 'yyyy-MM-dd',
-            width: '200px'
+            visdiplay: false,
+            width: '150px'
           },
+          {
+            label: '合计',
+            prop: 'sum',
+            visdiplay: false,
+            width: '150px'
+          },
+          {
+            label: '水表底',
+            prop: 'water',
+            width: '150px',
+            min: 0,
+            max: 99999,
+            hide: true
+          },
+          {
+            label: '电表底',
+            prop: 'electric',
+            width: '150px',
+            min: 0,
+            max: 99999,
+            hide: true
+          },
+          // {
+          //   label: '应缴日期',
+          //   prop: 'date',
+          //   type: 'date',
+          //   format: 'yyyy-MM-dd',
+          //   valueFormat: 'yyyy-MM-dd',
+          //   width: '200px'
+          // },
           {
             label: '是否已交',
+            type: 'select',
+            dicData: [
+              {
+                label: '已经缴费',
+                value: 1
+              }, {
+                label: '未缴费',
+                value: 0
+              }, {
+                label: '未缴费',
+                disabled: true
+              }
+            ],
             prop: 'state'
           }
         ]
@@ -105,14 +156,14 @@ export default {
     },
     rowDel (form, index) {
       this.$message.success('删除数据' + JSON.stringify(form))
-      delPrice(form).thin().catch()
+      delPrice(form).then().catch()
     },
     rowUpdate (form, index, done, loading) {
       setTimeout(() => {
         this.$message.success('正在请求')
         loading()
       }, 1000)
-      setPrice(form).thin(res => {
+      setPrice(form).then(res => {
         console.log(res)
         this.$message.success('请求成功')
       }
@@ -125,34 +176,28 @@ export default {
         done()
       }, 2000)
     },
-    rowSave (form, done, loading) {
-      setTimeout(() => {
-        this.$message.success('正在请求')
-        loading()
-      }, 1000)
-      setPrice(form).thin(res => {
-        console.log(res)
-        this.$message.success('请求成功')
+    onLoad (page) {
+      const send = {
+        currentPage: page.currentPage,
+        pageSize: page.pageSize
       }
-      ).catch(err => {
-        console.log(err)
-        this.$message.success('请求失败')
-      })
-      setTimeout(() => {
-        this.$message.success('新增数据' + JSON.stringify(form))
-        done()
-      }, 2000)
+      if (this.name !== '') {
+        send.name = this.name
+      }
+      getPriceList(send).then(data => {
+        console.log(data.data)
+        this.page.total = data.data.total
+        this.data = data.data.data
+      }).catch()
+      this.$message.success('分页信息:' + JSON.stringify(this.data))
     },
-
-    create () {
-      getPriceList().then(res => {
-        this.res = [...res.data]
-        // 返回数据
-      })
-        .catch(err => {
-          console.log(err)
-          // 异常情况
-        })
+    handleEdit (row, index) {
+      this.dialogVisible = true
+      getDetail(row).then(
+        data => {
+          this.rowData = data.data
+        }
+      )
     }
   },
   watch: {

@@ -138,7 +138,8 @@ const frameOut = [
     component: () => import('@/pages/UserPerfect')
   },
   {
-    path: '/OutInfo/:phone',
+    // path: '/OutInfo/:phone',
+    path: '/OutInfo',
     name: 'OutInfo',
     component: () => import('../pages/OutInfo'),
     meta: {

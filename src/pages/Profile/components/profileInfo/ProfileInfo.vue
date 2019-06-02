@@ -84,7 +84,6 @@ export default {
 <style scoped>
     .el-row {
         margin-bottom: 30px;
-    &
     :last-child {
         margin-bottom: 0;
     }

@@ -1,3 +1,3 @@
-import userPerfect from './userPerfect'
+import UserPerfect from './UserPerfect'
 
-export default userPerfect
+export default UserPerfect

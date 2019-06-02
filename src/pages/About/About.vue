@@ -8,7 +8,6 @@
 <script>
 // 组件
 import Me from './components/Me/index'
-import { getProfile } from '../../api/profile'
 // 请删除下面代码中你不需要的部分
 export default {
   name: 'About',
@@ -17,7 +16,13 @@ export default {
   },
   // 数据
   data () {
-    return {}
+    return {
+      searchData: {
+        input: '北京',
+        page: 1,
+        size: 2
+      }
+    }
   },
   // 计算属性
   computed: {},
@@ -36,15 +41,9 @@ export default {
   destroyed () {},
   // 事件处理方法
   methods: {
-    handleSubmit () {
-      getProfile().then(res => {
-        console.log(res)
-        // 返回数据
-      })
-        .catch(err => {
-          console.log(err)
-          // 异常情况
-        })
+    open () {
+      this.$message('这是一条消息提示')
+      console.log(this.searchData)
     }
   }
 }

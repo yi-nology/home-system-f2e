@@ -71,13 +71,13 @@ export default {
       contentmenuX: 0,
       contentmenuY: 0,
       contextmenuListIndex: [
-        { icon: 'times-circle', title: '关闭全部', value: 'all' }
+        { icon: 'times-circle', title: '关闭全部', value: 'logo@2x.png' }
       ],
       contextmenuList: [
         { icon: 'arrow-left', title: '关闭左侧', value: 'left' },
         { icon: 'arrow-right', title: '关闭右侧', value: 'right' },
         { icon: 'times', title: '关闭其它', value: 'other' },
-        { icon: 'times-circle', title: '关闭全部', value: 'all' }
+        { icon: 'times-circle', title: '关闭全部', value: 'logo@2x.png' }
       ],
       tagName: '/index'
     }
@@ -143,7 +143,7 @@ export default {
         case 'other':
           this.closeOther(params)
           break
-        case 'all':
+        case 'logo@2x.png':
           this.closeAll()
           break
         default:
