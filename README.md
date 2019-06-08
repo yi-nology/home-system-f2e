@@ -7,7 +7,7 @@
 ![人房钱.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%BA%BA%E6%88%BF%E9%92%B1.gif)
 ![合同管理.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/合同管理.gif)
 
-![对外暴露接口.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/对外暴露接口.gif)
+
 ![房东个人信息.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/房东个人信息.gif)
 
 ![房间信息.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/房间信息.gif)
@@ -19,3 +19,4 @@
 ## 后端接口信息
 ![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
 ![后端接口.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/后端接口.gif)
+![对外暴露接口.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/对外暴露接口.gif)
