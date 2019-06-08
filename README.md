@@ -4,3 +4,13 @@
 # 后端项目地址： https://github.com/zy84338719/home-system
 
 ![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![人房钱.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%BA%BA%E6%88%BF%E9%92%B1.gif)
+![合同管理.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/合同管理.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
+![上传.gif](https://github.com/zy84338719/home-system-f2e/blob/master/demo/%E4%B8%8A%E4%BC%A0.gif)
